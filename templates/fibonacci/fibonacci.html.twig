@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+        <style>
+            .date-block {
+                padding: 3%;
+            }
+            .content {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+            .btnSubmit {
+                margin: 3%;
+                padding: 3%;
+                position: absolute;
+                left: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <div class="content">
+            
+            <form action="{{ path('process_fibonacci') }}" method="POST" enctype="multipart/form-data">
+
+                <div class="date-block">
+                    <label for="startDate">Start date:</label>
+                    <input type="datetime-local" id="startDate" name="startDate">
+                </div>
+
+                <div class="date-block">
+                    <label for="endDate">End date:</label>
+                    <input type="datetime-local" id="endDate" name="endDate">
+                </div>
+
+                <button type="submit" class="btnSubmit">Send</button>
+
+            </form>
+        </div>
+    </body>
+</html>
